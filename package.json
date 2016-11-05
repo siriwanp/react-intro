@@ -4,8 +4,11 @@
   "description": "Introduction to React",
   "main": "index.js",
   "scripts": {
-    "build": ".\\node_modules\\.bin\\webpack --display-error-details",
-    "start": ".\\node_modules\\.bin\\webpack-dev-server --content-base dist"
+    "clean": "rmdir /s /q dist",
+    "copy": "mkdir dist & copy src\\index.html dist",
+    "prebuild": "npm run clean & npm run copy",
+    "build": "npm run clean & npm run copy & webpack --display-error-details",
+    "start": "webpack-dev-server --content-base dist"
   },
   "author": "Siriwan Lookpla",
   "license": "MIT",
